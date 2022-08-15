@@ -1,0 +1,41 @@
+
+<% if user_signed_in? %>
+  <table class="table table_striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>FavColor</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @frnds.each do |frnd| %>
+        <% if frnd.user == current_user %>
+        <tr>
+          <td>
+            <%= link_to frnd.first_name + ' ' +frnd.last_name, frnd %>
+          </td>
+          <td><%= frnd.email %></td>
+          <td><%= frnd.phone %></td>
+          <td><%= frnd.FavColor %></td>
+          <td><%= button_to 'Delete',frnd,class:"btn btn-outline-danger btn-sm", method: :delete, data: { confirm: 'Are you sure? ' } %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <%= link_to "New frnd", new_frnd_path,class:"btn btn-secondary" %>
+<% else %>
+  <!DOCTYPE html>
+  <html>
+  <h1>Hii Frnds</h1>
+  <h4>Welcome to frnds webpage</h4>
+  <body>
+      <img src="frnds.jpg" style="width:700px;height:500px;"/></body>
+   </body>
+  </html>
+<% end %>

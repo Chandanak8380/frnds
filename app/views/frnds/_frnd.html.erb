@@ -1,0 +1,21 @@
+<div id="<%= dom_id frnd %>">
+
+  <div class="jumbotron">
+  <h1 class="display-4">
+    <%= frnd.first_name %>
+    <%= frnd.last_name %>
+    </h1>
+  <p class="lead">
+    <%= frnd.email %> |
+    <%= frnd.phone %> |
+    <%= frnd.FavColor %>
+  </p>
+<br/>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to "Edit this frnd", edit_frnd_path(@frnd), class:"btn btn-secondary" %> 
+  <%= button_to 'Delete',@frnd ,class:"btn btn-danger", method: :delete, data: { confirm: 'Are you sure? ' } %>
+  <%= link_to "Back to frnds", frnds_path,class:"btn btn-secondary" %>
+</div>
+</div>
+</div>
